@@ -2,7 +2,7 @@
 
 This is a Flask local API.
 
-##Setup
+## Setup
 1. there is a requirements.txt where you can download the dependencies.
 
    pip install -r requirements.txt
@@ -23,8 +23,68 @@ This is a Flask local API.
 
    const BASE_URL = "http://127.0.0.1:5000";
 
-##Example fetch
+# API Endpoints
 
+## Users
+
+| HTTP Method | Endpoint         | Description                |
+|-------------|------------------|----------------------------|
+| GET         | `/users`         | Fetch all users.           |
+| GET         | `/users/<id>`    | Fetch a single user by ID. |
+| POST        | `/users`         | Add a new user.            |
+| PUT         | `/users/<id>`    | Update user details.       |
+| DELETE      | `/users/<id>`    | Delete a user by ID.       |
+   
+## Workouts
+
+| HTTP Method | Endpoint                | Description                       |
+|-------------|-------------------------|-----------------------------------|
+| GET         | `/workouts/<id>`       | Fetch a single workout by ID.    |
+| POST        | `/workouts`            | Procedure. Add a new workout. Should increment workout in progress table Must specify user id              |
+| POST        | `/workouts_with_exercises` | Transaction. Add a workout with exercises.   |
+| PUT         | `/workouts/<id>`       | Update workout details.          |
+| DELETE      | `/workouts/<id>`       | Delete a workout by ID.          |
+
+## Exercises
+
+| HTTP Method | Endpoint                | Description                       |
+|-------------|-------------------------|-----------------------------------|
+| GET         | `/exercises/<id>`      | Fetch a single exercise by ID.   |
+| POST        | `/exercises`           | Add a new exercise. Must specify user id             |
+| PUT         | `/exercises/<id>`      | Update exercise details.         |
+| DELETE      | `/exercises/<id>`      | Delete an exercise by ID.        |
+
+## Diet
+
+| HTTP Method | Endpoint                | Description                       |
+|-------------|-------------------------|-----------------------------------|
+| GET         | `/diet/<user_id>`      | Fetch diet entries by user ID.   |
+| POST        | `/diet`                | Add a new diet entry. Must specify user id          |
+| PUT         | `/diet/<id>`           | Update diet entry details.       |
+| DELETE      | `/diet/<id>`           | Delete a diet entry by ID.       |
+
+## Goals
+
+| HTTP Method | Endpoint                | Description                       |
+|-------------|-------------------------|-----------------------------------|
+| GET         | `/goals/<user_id>`     | Fetch goals by user ID.          |
+| POST        | `/goals`               | Add a new goal. Must specify user id                  |
+| PUT         | `/goals/<id>`          | Update goal details.             |
+| DELETE      | `/goals/<id>`          | Delete a goal by ID.             |
+
+## Progress
+
+| HTTP Method | Endpoint                | Description                       |
+|-------------|-------------------------|-----------------------------------|
+| GET         | `/progress/<user_id>`  | Fetch progress entries by user ID.|
+| POST        | `/progress`            | Add a new progress entry. Must specify user id        |
+| PUT         | `/progress/<id>`       | Update progress entry details.   |
+| DELETE      | `/progress/<id>`       | Delete a progress entry by ID.   |
+
+
+## Example fetch
+
+```javascript
 async function fetchUsers() {
     try {
         const response = await fetch(`${BASE_URL}/users`, {
@@ -37,9 +97,6 @@ async function fetchUsers() {
     }
 }
 fetchUsers();
+'''
 
 this should fetch all users in our database.
-
-
-   
-   
